@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+import numpy as N
+import sys, os
+
+time_start = 4980
+dt         = -0.025
+nlocal     = 80
+file_dt    = -2
+nstep      = 449
+prefix     = "cm1out"
+trajfile   = "traj2.nc"
+ubox       = 0.
+vbox       = 0.
+
+times = time_start + N.arange(nstep)*file_dt
+
+for time in times: 
+
+  cmd = "traj.py --dt=%f --nstep=%d --prefix='%s' -f '%s' -t %d --um=%f --vm=%f" % (dt, nlocal, prefix, trajfile, time, ubox, vbox)
+  if time == time_start:
+    cmd = cmd + "  --ntraj=759"
+
+  print "Now executing:  %s" % cmd
+
+  os.system(cmd)
