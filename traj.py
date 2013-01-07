@@ -443,7 +443,7 @@ def traj_compute(x, y, z, dt, state):
   
   if debug:  print "\n Now calling fortran subroutine to integrate trajectories \n"
   
-# Call fortran program to compute RK2 time integration
+# Call fortran program to compute RK4 time integration
 
   xnew, ynew, znew, unew, vnew, wnew = traj_integrate(x, y, z, u0, v0, w0, u1, v1, w1, xc, xe, yc, ye, zc, ze, ndt, t0, t1, 0.0, 0.0, nstep)
   
